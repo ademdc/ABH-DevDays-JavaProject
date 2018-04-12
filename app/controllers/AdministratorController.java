@@ -6,6 +6,7 @@ import play.db.jpa.Transactional;
 
 import javax.inject.Inject;
 import play.mvc.Http;
+import play.Logger;
 
 /**
  * The type Administrator controller.
@@ -24,8 +25,9 @@ public class AdministratorController extends BaseController {
 		this.service = service;
 	}
 
-	@Transactional
+	@Transactional(readOnly=true)
 	public Result getAdminStats() {
-				return wrapForAdmin(() -> this.service.getAdminStats());
+		Logger.debug(" no of restaurants");
+				return wrapForPublic(() -> this.service.getAdminStats());
 			}
 }

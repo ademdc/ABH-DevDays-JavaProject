@@ -15,6 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.UUID;
+import play.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -42,25 +45,35 @@ public class AdministratorService extends BaseService {
 				Files.delete(Paths.get(path));
 				return true;
 			}
-	public AdministratorStatistics getAdminStats(){
-		      Integer noOfRestaurants = Integer.valueOf(getSession().createCriteria(Restaurant.class)
+	final Map<String, Long> restaurant = new HashMap<>();
+
+	public Map<String, Long> getAdminStats(){
+		      Long noOfRestaurants = Long.valueOf(getSession().createCriteria(Restaurant.class)
 				                .setProjection(Projections.rowCount())
 				                .uniqueResult().toString());
-		      Integer noOfLocations = Integer.valueOf(getSession().createCriteria(City.class)
+		      Long noOfLocations = Long.valueOf(getSession().createCriteria(City.class)
 				                .setProjection(Projections.rowCount())
 				                .uniqueResult().toString());
-		      Integer noOfUsers = Integer.valueOf(getSession().createCriteria(User.class)
+		      Long noOfUsers = Long.valueOf(getSession().createCriteria(User.class)
 				                .setProjection(Projections.rowCount())
 				                .uniqueResult().toString());
-		      Integer noOfCuisines = Integer.valueOf(getSession().createCriteria(Cuisine.class)
+		      Long noOfCuisines = Long.valueOf(getSession().createCriteria(Cuisine.class)
 				                .setProjection(Projections.rowCount())
 				                .uniqueResult().toString());
 
-		        return AdministratorStatistics.createStats()
+				restaurant.put("noOfRestaurants", noOfRestaurants);
+				restaurant.put("noOfLocations", noOfLocations);
+				restaurant.put("noOfUsers", noOfUsers);
+				restaurant.put("noOfCuisines", noOfCuisines);
+
+				Logger.debug(restaurant.toString()+" no of restaurants");
+
+		        /*return AdministratorStatistics.createStats()
 				                .setRestaurants(noOfRestaurants)
 				                .setLocations(noOfLocations)
 				                .setUsers(noOfUsers)
-				                .setCuisines(noOfCuisines);
+				                .setCuisines(noOfCuisines);*/
+		        return restaurant;
 		  	}
 
 }
