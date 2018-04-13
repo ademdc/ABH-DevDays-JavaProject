@@ -7,6 +7,7 @@ import services.CityService;
 
 import javax.inject.Inject;
 import java.util.UUID;
+import play.Logger;
 
 /**
  * The type City controller.
@@ -74,6 +75,7 @@ public class CityController extends BaseController {
 	 */
 	@Transactional(readOnly = true)
 	public Result getAllCities() {
+
 		return wrapForPublic(() -> this.service.getAllCities());
 	}
 }

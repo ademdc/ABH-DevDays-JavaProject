@@ -55,6 +55,7 @@ GET     /api/v1/getAllCuisines                              controllers.CuisineC
 # ---------------------------------------------------------------------------------------------------------------------- TO BE DEPRECATED
 GET     /api/v1/getAllCuisinesAsString                      controllers.CuisineController.getAllCuisinesAsString
 GET     /api/v1/getAdminStats                               controllers.AdministratorController.getAdminStats
+GET     /api/v1/getLogs                                     controllers.AdministratorController.getLogs
 
 # CITY MANAGEMENT ROUTES -----------------------------------------------------------------------------------------------
 

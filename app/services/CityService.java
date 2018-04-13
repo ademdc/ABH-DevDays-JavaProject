@@ -51,6 +51,7 @@ public class CityService extends BaseService {
 	 * @throws Exception the exception
 	 */
 	public Boolean createCity(final City city) throws Exception {
+		log("Admin created new city");
 		getSession().save(city);
 		return true;
 	}
@@ -62,6 +63,7 @@ public class CityService extends BaseService {
 	 * @throws Exception the exception
 	 */
 	public Boolean editCity(final City city) throws Exception {
+		log("Admin edited a city");
 		getSession().update(city);
 		return true;
 	}
@@ -73,6 +75,7 @@ public class CityService extends BaseService {
 	 * @throws Exception the exception
 	 */
 	public Boolean deleteCity(final UUID id) throws Exception {
+		log("Admin deleted a city");
 		City city = (City) getSession().createCriteria(City.class)
 				.add(Restrictions.eq("id", id))
 				.uniqueResult();

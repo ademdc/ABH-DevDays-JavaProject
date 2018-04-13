@@ -18,13 +18,22 @@ import java.util.UUID;
 import play.Logger;
 import java.util.HashMap;
 import java.util.Map;
+import models.tables.Log;
+import java.util.List;
 
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
+import models.tables.City;
+
+import play.db.jpa.JPA;
 
 /**
  * The type Administrator service.
  */
 @Singleton
 public class AdministratorService extends BaseService {
+	private static final String ORDER_KEY = "logging_time";
 
 	@Inject
 	private AdministratorService() { }
@@ -66,14 +75,15 @@ public class AdministratorService extends BaseService {
 				restaurant.put("noOfUsers", noOfUsers);
 				restaurant.put("noOfCuisines", noOfCuisines);
 
-				Logger.debug(restaurant.toString()+" no of restaurants");
-
-		        /*return AdministratorStatistics.createStats()
-				                .setRestaurants(noOfRestaurants)
-				                .setLocations(noOfLocations)
-				                .setUsers(noOfUsers)
-				                .setCuisines(noOfCuisines);*/
 		        return restaurant;
 		  	}
+
+
+	public List<Log> getLogs() {
+		return (List<Log>) getSession().createCriteria(Log.class)
+				.addOrder(Order.asc(ORDER_KEY))
+				.list();
+
+	}
 
 }

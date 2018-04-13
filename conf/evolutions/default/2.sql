@@ -30,6 +30,13 @@ INSERT INTO cuisine(name) VALUES ('Thai');
 INSERT INTO cuisine(name) VALUES ('Tibetan');
 INSERT INTO cuisine(name) VALUES ('Vietnamese');
 INSERT INTO cuisine(name) VALUES ('Persian');
+INSERT INTO cuisine(name) VALUES ('Bosnian');
+
+INSERT INTO logs(logging_time, description) VALUES ('2001-02-16 20:38:40','User created');
+INSERT INTO logs(logging_time, description) VALUES ('2001-02-16 20:38:40','Filter used');
+INSERT INTO logs(logging_time, description) VALUES ('2001-02-16 20:38:40','Cuisine added');
+INSERT INTO logs(logging_time, description) VALUES ('2001-02-16 20:38:40','User created');
+
 
 INSERT INTO restaurant(name, city_id, address, phone, price_range, cover_image_path, profile_image_path, description, menu, latitude, longitude) SELECT 'The Glass Exchange', city.id, '730 Constitution Ave.', '+000-111/22-33-44', 2, 'https://abhrestaurants.s3.amazonaws.com/placeholder-cover.jpg', '/assets/images/rPlaceholder.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget purus ac massa vulputate mattis. Nullam luctus commodo placerat. Mauris imperdiet lorem dolor, pharetra molestie arcu commodo sed. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam hendrerit libero id elit tincidunt mollis. Cras at faucibus elit. Donec ut lectus ex. Nullam ac venenatis massa, et porta nisi. Praesent eu dignissim nulla. Fusce id bibendum tortor.', '{}', 0, 0 FROM city WHERE name = 'Sarajevo';
 INSERT INTO restaurant(name, city_id, address, phone, price_range, cover_image_path, profile_image_path, description, menu, latitude, longitude) SELECT 'The Bengal Way', city.id, '72 Elm Dr.', '+000-111/22-33-44', 3, 'https://abhrestaurants.s3.amazonaws.com/placeholder-cover.jpg', '/assets/images/rPlaceholder.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget purus ac massa vulputate mattis. Nullam luctus commodo placerat. Mauris imperdiet lorem dolor, pharetra molestie arcu commodo sed. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam hendrerit libero id elit tincidunt mollis. Cras at faucibus elit. Donec ut lectus ex. Nullam ac venenatis massa, et porta nisi. Praesent eu dignissim nulla. Fusce id bibendum tortor.', '{}', 0, 0 FROM city WHERE name = 'Sarajevo';

@@ -27,7 +27,10 @@ public class AdministratorController extends BaseController {
 
 	@Transactional(readOnly=true)
 	public Result getAdminStats() {
-		Logger.debug(" no of restaurants");
 				return wrapForPublic(() -> this.service.getAdminStats());
 			}
+	@Transactional(readOnly=true)
+	public Result getLogs() {
+		return wrapForPublic(() -> this.service.getLogs());
+	}
 }
