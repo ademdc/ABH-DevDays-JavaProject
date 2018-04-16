@@ -6,17 +6,21 @@ import play.db.jpa.JPA;
 
 import java.util.Base64;
 
+import java.sql.Timestamp;
+import play.Logger;
+import models.tables.Log;
+
 /**
  * The type Base service.
  */
-abstract class BaseService {
+public abstract class BaseService {
 
 	/**
 	 * Gets session.
 	 *
 	 * @return the session
 	 */
-	Session getSession() {
+	public Session getSession() {
 		return ((HibernateEntityManager) JPA.em()).getSession();
 	}
 
@@ -38,6 +42,14 @@ abstract class BaseService {
 	 */
 	byte[] base64Decode(final String string) {
 		return Base64.getDecoder().decode(string);
+	}
+
+	public void log(String message) {
+		Log log = new Log();
+		log.setLogging_time(System.currentTimeMillis());
+		log.setDescription(message);
+		String s = String.valueOf(log.getLogging_time());
+		this.getSession().save(log);
 	}
 
 }

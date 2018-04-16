@@ -13,8 +13,11 @@ export default Ember.Component.extend({
   renderGoogleMap(container) {
     let options = {
       center: new window.google.maps.LatLng(43.9, 18),
+<<<<<<< HEAD
       zoom: 10,
+=======
       zoom: 100
+>>>>>>> 7c5a1c0f3f47bf17bf82c05d079881cd60b99e1a
     };
 
     let map = new window.google.maps.Map(container, options);

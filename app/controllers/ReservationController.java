@@ -79,7 +79,7 @@ public class ReservationController extends BaseController {
 
 	/**
 	 * Gets all reservations.
-	 *
+	 *git
 	 * @param restaurantId the restaurant id
 	 * @param dateFilter   the date filter
 	 * @return the all reservations

@@ -56,6 +56,7 @@ public class UserService extends BaseService {
 	 * @return the account
 	 */
 	public User register(final RegisterForm registerForm) {
+		log("New user registered");
 		try {
 			User newUser = registerForm.createAccount();
 			getSession().save(newUser);
@@ -128,6 +129,8 @@ public class UserService extends BaseService {
 	 * @return the boolean
 	 */
 	public Boolean editUser(User user) {
+		log("User edited");
+
 		if (user.getId() != null) {
 			User dbUser = this.getUser(user.getId());
 			dbUser.setIsAdmin(user.getIsAdmin());
@@ -146,6 +149,8 @@ public class UserService extends BaseService {
 	 * @throws Exception the exception
 	 */
 	public Boolean deleteUser(final UUID id) throws Exception {
+		log("User deleted");
+
 		User user = (User) getSession().createCriteria(User.class)
 				.add(Restrictions.eq("id", id))
 				.uniqueResult();

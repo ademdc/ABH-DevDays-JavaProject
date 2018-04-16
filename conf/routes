@@ -26,6 +26,7 @@ PATCH   /api/v1/admin/updatePicture                         controllers.Restaura
 
 GET     /api/v1/getAllRestaurants                           controllers.RestaurantController.getAllRestaurants
 GET     /api/v1/getNumberOfRestaurants                      controllers.RestaurantController.getNumberOfRestaurants
+
 GET     /api/v1/getNearbyRestaurants/:latitude/:longitude   controllers.RestaurantController.getNearbyRestaurants(latitude: Float,longitude: Float)
 GET     /api/v1/getPopularRestaurants                       controllers.RestaurantController.getPopularRestaurants
 GET     /api/v1/getPopularLocations                         controllers.RestaurantController.getPopularLocations
@@ -53,6 +54,8 @@ GET     /api/v1/getAllCuisines                              controllers.CuisineC
 
 # ---------------------------------------------------------------------------------------------------------------------- TO BE DEPRECATED
 GET     /api/v1/getAllCuisinesAsString                      controllers.CuisineController.getAllCuisinesAsString
+GET     /api/v1/getAdminStats                               controllers.AdministratorController.getAdminStats
+GET     /api/v1/getLogs                                     controllers.AdministratorController.getLogs
 
 # CITY MANAGEMENT ROUTES -----------------------------------------------------------------------------------------------
 
@@ -71,3 +74,9 @@ GET     /assets/*file                                       controllers.Assets.a
 GET     /fonts/*file                                        controllers.Assets.at(path="/public/fonts", file)
 GET     /                                                   controllers.EmberController.index(slug="")
 GET     /*slug                                              controllers.EmberController.index(slug)
+
+
+
+# LOGS MANAGEMENT  --------------------------------------------------------------------------------------------
+# GET  /api/v1/admin/logs/                                  controllers.LogController.getAllLogs
+

@@ -148,6 +148,8 @@ public class ReservationService extends BaseService {
 	 * @throws Exception the exception
 	 */
 	public Reservation postReservation(ReservationForm reservationForm) throws Exception {
+		log("New reservation posted");
+
 		Reservation reservation = new Reservation();
 		reservation.setStartTime(reservationForm.getDate().getTime() + reservationForm.getTime().getTime() + ONE_HOUR_MILLIS);
 		reservation.setReservedOn(System.currentTimeMillis());

@@ -63,6 +63,7 @@ public class CuisineService extends BaseService {
 	 * @return the boolean
 	 */
 	public Boolean createCuisine(final Cuisine cuisine) {
+		log("Cusine "+ cuisine.getName() +" created");
 		getSession().save(cuisine);
 		return true;
 	}
@@ -74,6 +75,7 @@ public class CuisineService extends BaseService {
 	 * @return the boolean
 	 */
 	public Boolean editCuisine(final Cuisine cuisine) {
+		log(cuisine.getName() + " cuisine edited");
 		getSession().update(cuisine);
 		return true;
 	}
@@ -85,10 +87,12 @@ public class CuisineService extends BaseService {
 	 * @return the boolean
 	 */
 	public Boolean deleteCuisine(final UUID id) {
+
 		Cuisine cuisine = (Cuisine) getSession().createCriteria(Cuisine.class)
 				.add(Restrictions.eq("id", id))
 				.uniqueResult();
 
+		log(cuisine.getName() + " cuisine deleted");
 		getSession().delete(cuisine);
 		return true;
 	}
